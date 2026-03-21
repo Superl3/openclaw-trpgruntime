@@ -44,6 +44,33 @@ openclaw plugins info trpg-runtime
 - Dedicated agent: `agents.list`에 `id: "trpg"` 추가 + Discord `bindings` route 추가 + `allowedAgentIds: ["trpg"]`로 제한합니다.
 - 두 모드 모두 안전한 온보딩을 위해 기본값은 `allowPatchApply: false`입니다.
 
+## Bundled TRPG agent
+
+- 포함 파일:
+  - `agent/AGENTS.md`
+  - `agent/prompts/system.md`
+  - `agent/prompts/session-start.md`
+  - `agent/config/models.template.json`
+  - `agent/config/auth-profiles.template.json`
+  - `agent/config/trpg-overlay.template.json`
+- 제외 파일:
+  - 실제 API 키/토큰/OAuth 인증정보
+  - 로컬 세션, lock 파일, 개인 계정 메타데이터
+- 전용 에이전트 오버레이는 `agentDir: "~/.openclaw/extensions/trpg-runtime/agent"`를 사용합니다.
+- plugin-only 온보딩은 전용 `agentDir` 자산을 사용하지 않아도 동작합니다.
+
+설치 후 온보딩 순서:
+
+1. 예시 오버레이 선택:
+   - `examples/openclaw.overlay.onboard.plugin-only.json`
+   - `examples/openclaw.overlay.onboard.trpg-agent.json`
+2. 설정 검증:
+   - `openclaw config validate --json`
+3. 플러그인 확인:
+   - `openclaw plugins info trpg-runtime`
+4. 전용 모드 바인딩 확인:
+   - `openclaw agents bindings --agent trpg --json`
+
 ## 5) Validation checklist/commands
 
 ```bash

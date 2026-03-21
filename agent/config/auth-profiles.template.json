@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "profiles": {
+    "openrouter:default": {
+      "type": "api_key",
+      "provider": "openrouter",
+      "key": "<OPENROUTER_API_KEY>"
+    },
+    "google:default": {
+      "type": "api_key",
+      "provider": "google",
+      "key": "<GOOGLE_API_KEY>"
+    }
+  },
+  "lastGood": {
+    "openrouter": "openrouter:default",
+    "google": "google:default"
+  },
+  "usageStats": {}
+}

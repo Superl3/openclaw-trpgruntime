@@ -44,6 +44,33 @@ openclaw plugins info trpg-runtime
 - Dedicated agent: add `agents.list` entry `id: "trpg"` + `bindings` route for Discord + plugin config restricted to `allowedAgentIds: ["trpg"]`.
 - Both modes keep `allowPatchApply: false` by default for safe onboarding.
 
+## Bundled TRPG agent
+
+- Included files:
+  - `agent/AGENTS.md`
+  - `agent/prompts/system.md`
+  - `agent/prompts/session-start.md`
+  - `agent/config/models.template.json`
+  - `agent/config/auth-profiles.template.json`
+  - `agent/config/trpg-overlay.template.json`
+- Excluded files:
+  - real API keys/tokens/OAuth credentials
+  - local sessions, lock files, private account metadata
+- Dedicated overlays use `agentDir: "~/.openclaw/extensions/trpg-runtime/agent"`.
+- Plugin-only onboarding stays valid even when you do not use dedicated `agentDir` assets.
+
+Onboarding flow after install:
+
+1. Choose overlay example:
+   - `examples/openclaw.overlay.onboard.plugin-only.json`
+   - `examples/openclaw.overlay.onboard.trpg-agent.json`
+2. Validate config:
+   - `openclaw config validate --json`
+3. Check plugin:
+   - `openclaw plugins info trpg-runtime`
+4. Dedicated mode binding check:
+   - `openclaw agents bindings --agent trpg --json`
+
 ## 5) Validation checklist/commands
 
 ```bash

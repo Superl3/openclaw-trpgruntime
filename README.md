@@ -69,6 +69,22 @@ These are minimal post-install examples with safe defaults:
 - `plugins.entries.trpg-runtime.config.allowPatchApply=false`
 - `plugins.entries.trpg-runtime.config.allowedAgentIds=[]` (plugin-only) or `["trpg"]` (dedicated agent)
 
+## Bundled TRPG agent
+
+This extension now includes reusable dedicated-agent assets in `agent/` for standalone install/onboarding.
+
+- Included: `agent/AGENTS.md`, `agent/prompts/*`, `agent/config/*.template.json`.
+- Excluded: real credentials/tokens/sessions/lock files and any private auth data.
+- Dedicated overlays already point `agentDir` to `~/.openclaw/extensions/trpg-runtime/agent`.
+- Plugin-only overlays still work without requiring the bundled `agentDir`.
+
+Recommended onboarding flow after install/link:
+
+1. Apply one example overlay (`examples/openclaw.overlay.onboard.plugin-only.json` or `examples/openclaw.overlay.onboard.trpg-agent.json`).
+2. Run `openclaw config validate --json`.
+3. Run `openclaw plugins info trpg-runtime`.
+4. Dedicated mode only: run `openclaw agents bindings --agent trpg --json`.
+
 ## Bilingual docs
 
 - English guide: `docs/USAGE.en.md`
